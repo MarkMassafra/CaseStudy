@@ -1,0 +1,46 @@
+import pandas as pd
+
+df = pd.read_csv('/Users/markmassafra/Desktop/manhattan_sales_V2.csv')
+
+def numeric_to_text(home_type):
+    if home_type == 1:
+       return "Single-Family Homes"
+    elif home_type == 2:
+        return "Two Family Homes"
+    else:
+       return "Three Family Homes"
+
+#Added text home type back into dataset
+df['Home Type'] = df['home_type'].apply(numeric_to_text)
+
+def location_name_change(location):
+    if location == 'M':
+        return 'Midtown'
+    elif location == 'D':
+        return 'Downtown'
+    elif location == 'U':
+        return 'Uptown'
+    elif location == 'UWS':
+        return 'Upper West Side'
+    else:
+        return 'Upper East Side'
+
+#Changed from abbreviation to full word
+df['Location in Manhattan'] = df['location'].apply(location_name_change)
+
+df = df.rename(columns={'neighborhood':'Neighborhood','location':'Location in Manhattan','home_type':'Home Type',
+                        'number_properties':'Number of Properties','sales':'Number of Sales',
+                        'lowest_sale':'Lowest Sale Price (USD)','avg_sale':'Average Sale Price (USD)',
+                        'median_sale':'Median Sale Price (USD)','highest_sale':'Highest Sale Price (USD)',
+                        'zip_code':'Zip Code','poverty_percent':'Percent of Neighborhood in Poverty','median_income':'Median Income (USD)'})
+
+df.to_csv('/Users/markmassafra/Desktop/manhattan_sales_V3.csv',index=False)
+
+Excel done after V3 was created in Pandas
+
+Weighted Avg Sale Price by Neighborhood: 
+(((# sales 1 family home)*average price)+((# sales 2 family home)*average price)+((# sales 3 family home)*average price)))
+
+Median Housing Price to median income ratio:
+round(median sale price/(median income*number of family home),4) - number of family home is either 1,2 or 3 based on the size of the home
+
