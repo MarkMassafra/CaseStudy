@@ -1,5 +1,3 @@
-Prupose: Changed type of homes from string to numeric (one family homes -> 1) in order to find possible correaltion between median sales price and home type
-
 import pandas as pd
 
 df = pd.read_csv('/Users/markmassafra/Desktop/manhattan-dataset.csv')
