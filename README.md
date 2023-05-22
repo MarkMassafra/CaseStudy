@@ -1,3 +1,3 @@
+Analysis of 2 Distinct Datasets; Manhattan Home Sales & NYC EITC Data from 2004-2014
 
-
-in process of adding material, will be adding shortly
+PowerBI Visual to be uploaded to Main Repository
