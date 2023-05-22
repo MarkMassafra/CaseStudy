@@ -1,21 +1,40 @@
+Overall Breakdown of processes completed in each version of the Manhattan Home Sales Case Study
+
 Original Dataset: nyc-eitc.csv
 
+V1: nyc_eitc_V1.csv; Tools Used: Excel
+Removed Notes, Place of Residence & Earned Income Sort Order Columns in excel by manually deleting columns
+
+V2: nyc_eitc_V2.csv; Tools Used: Pandas
+Filled all empty cells w/ 0 (Pandas)
+Removed "total" rows in size of income (Pandas)
+
+V3: nyc_eitc_V3.csv; Tools Used: Excel, Pandas
+Pivoted Number of children from columns to rows (Excel)
+- summed number of claims, summed credit amount & used weighted avg for avg credt for each row of data
+Cleaned column headers by removing parenthesis and stars (Pandas)
+
+V4: nyc_eitc_V4.csv; Tools Used: Excel
+Normalized childern option to 3 ranges: 0,1,2 or more
+- before there were 5 options: 0,1,1+,2,2+
+- summed total claims, summed credit claimed and used weighted avg for avg credit
+Normalized income range so max bracket was 32,001 & Over
+- before there were ranges from 32-36, 36-40k, 44-48k & 48k+
+- summed total claims, summed credit claimed and used weighted avg for credit claimed for each row of data
+
+V5: nyc_eitc_V5.csv; Tools Used: Excel
+Added poverty line column, which was calculated based on US and NYC poverty stats and finding ratio between them for years not listed in NYC mayors office of economic opportunity
+
+Poverty Line Data: NYC mayors office of economic opportunity for 2005,2010-2012 NYC data
+US poverty data: https://aspe.hhs.gov/topics/poverty-economic-mobility/poverty-guidelines/prior-hhs-poverty-guidelines-federal-register-references
 
 
-V1: nyc_eitc_V1.csv
+V6: nyc_eitc_V6.csv; Tools Used: Pandas, Excel
+Added “Poverty” column: looks at upper limit of income range and if the upper limit is less than poverty number, then “Y” is inserted for that row and “N” if upper limit of income range is greater than the poverty line
+Percentage of claims in poverty column – summed up number of claims by number of children in poverty and then divided by total number of claims by # of children
+Added YoY change in number of claims by number of children 
+Ex: total number in poverty for 0 children (49020 from 0-4k, 81895 from 4k-8k, 42935 for 8k-12k)/(49020+81895+42935+529) = 99.7%
 
-
-V2: nyc_eitc_V2.csv
-
-V3: nyc_eitc_V3.csv
-
-
-V4: nyc_eitc_V4.csv
-
-
-V5: nyc_eitc_V5.csv
-
-V6: nyc_eitc_V6.csv
 
 
 
