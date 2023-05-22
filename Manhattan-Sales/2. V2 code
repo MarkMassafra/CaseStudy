@@ -1,0 +1,57 @@
+import pandas as pd
+
+df = pd.read_csv('/Users/markmassafra/Desktop/manhattan_sales_V1.csv')
+
+#Rename columns
+df = df.rename(columns={'NEIGHBORHOOD':'neighborhood','TYPE OF HOME':'home_type','TOTAL NO. OF PROPERTIES':'number_properties',
+                        'NUMBER OF SALES':'sales','LOWEST SALE PRICE':'lowest_sale','AVERAGE SALE PRICE':'avg_sale',
+                        'MEDIAN SALE PRICE':'median_sale','HIGHEST SALE PRICE':'highest_sale'})
+
+df['neighborhood'] = df['neighborhood'].str.strip()
+
+#Renamed neighborhoods
+new_neighborhood = {'CHELSEA':'Chelsea','EAST VILLAGE':'East Village','GRAMERCY':'Gramercy','GREENWICH VILLAGE-CENTRAL':'Central Greenwich Village',
+                    'GREENWICH VILLAGE-WEST':'West Greenwich Village','HARLEM-CENTRAL':'Central Harlem',
+                    'HARLEM-EAST':'East Harlem','HARLEM-UPPER':'Upper Harlem','HARLEM-WEST':'West Harlem',
+                    'INWOOD':'Inwood','LITTLE ITALY':'Little Italy','MANHATTAN VALLEY':'Manhattan Valley',
+                    'MIDTOWN EAST':'Midtown East','MURRAY HILL':'Murray Hill','SOHO':'SoHo','UPPER EAST SIDE (59-79)':'Upper East Side (59-79)',
+                    'UPPER EAST SIDE (79-96)':'Upper East Side (79-96)','UPPER WEST SIDE (59-79)':'Upper West Side (59-79)',
+                    'UPPER WEST SIDE (79-96)':'Upper West Side (79-96)','WASHINGTON HEIGHTS LOWER':'Washington Heights Lower'}
+
+df['neighborhood'] = df['neighborhood'].replace(new_neighborhood)
+
+#Mapped zip code to neighborhood
+zip_codes = {'Chelsea':10001,'East Village':10009,'Gramercy':10003,'Central Greenwich Village':10011,
+             'West Greenwich Village':10014,'Central Harlem':10027,'East Harlem':10035,'Upper Harlem':10039,
+             'West Harlem':10031,'Inwood':10034,'Little Italy':10013,'Manhattan Valley':10025,'Midtown East':10022,
+             'Murray Hill':10016,'SoHo':10012,'Upper East Side (59-79)':10021,'Upper East Side (79-96)':10028,
+             'Upper West Side (59-79)':10023,'Upper West Side (79-96)':10024,'Washington Heights Lower':10032}
+
+#Mapped relative region in Manhattan to neighborhood
+locations = {'Chelsea':'M','East Village':'D','Gramercy':'M','Central Greenwich Village':'D',
+             'West Greenwich Village':'D','Central Harlem':'U','East Harlem':'U','Upper Harlem':'U',
+             'West Harlem':'U','Inwood':'U','Little Italy':'D','Manhattan Valley':'UWS','Midtown East':'M',
+             'Murray Hill':'M','SoHo':'D','Upper East Side (59-79)':'UES','Upper East Side (79-96)':'UES',
+             'Upper West Side (59-79)':'UWS','Upper West Side (79-96)':'UWS','Washington Heights Lower':'U'}
+
+#Mapped poverty percentage from 2020 US Census in each neighborhood
+poverty_percent = {'Chelsea':14,'East Village':24,'Gramercy':11,'Central Greenwich Village':10,
+             'West Greenwich Village':7,'Central Harlem':23,'East Harlem':34,'Upper Harlem':27,
+             'West Harlem':24,'Inwood':16,'Little Italy':10,'Manhattan Valley':14,'Midtown East':6,
+             'Murray Hill':9,'SoHo':12,'Upper East Side (59-79)':5,'Upper East Side (79-96)':5,
+             'Upper West Side (59-79)':8,'Upper West Side (79-96)':8,'Washington Heights Lower':19}
+
+#Mapped median income from 2020 US Census to each neighborhood
+median_income = {'Chelsea':101409,'East Village':77551,'Gramercy':137533,'Central Greenwich Village':139343,
+             'West Greenwich Village':136559,'Central Harlem':58435,'East Harlem':32555,'Upper Harlem':50164,
+             'West Harlem':57180,'Inwood':63851,'Little Italy':137572,'Manhattan Valley':103440,'Midtown East':156255,
+             'Murray Hill':136431,'SoHo':117581,'Upper East Side (59-79)':136060,'Upper East Side (79-96)':149789,
+             'Upper West Side (59-79)':136109,'Upper West Side (79-96)':153177,'Washington Heights Lower':55059}
+
+#Added 4 new columns based on conditions listed in dictionaries above
+df['zip_code'] = df['neighborhood'].map(zip_codes)
+df['location'] = df['neighborhood'].map(locations)
+df['poverty_percent'] = df['neighborhood'].map(poverty_percent)
+df['median_income'] = df['neighborhood'].map(median_income)
+
+df.to_csv('/Users/markmassafra/Desktop/manhattan_sales_V2.csv',index=False)
