@@ -1,0 +1,5 @@
+Removed all neighborhoods not in my dataset manually in excel
+Copied over the BLDGZIP, PO_NAME, POPULATION, AREA, STATE, COUNTY, ST_FIPS, CTY_FIPS, URLM SHAPE_AREA, SHAPE_LEN columns from the zip code .csv file to the V3 file. 
+Matched up the zip code.
+
+manhattan_sales_V4.csv was final version to be uplaoded into PowerBI
