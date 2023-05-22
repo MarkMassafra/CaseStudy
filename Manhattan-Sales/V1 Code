@@ -1,0 +1,26 @@
+Prupose: Changed type of homes from string to numeric (one family homes -> 1) in order to find possible correaltion between median sales price and home type
+
+import pandas as pd
+
+df = pd.read_csv('/Users/markmassafra/Desktop/manhattan-dataset.csv')
+df['TYPE OF HOME'] = df['TYPE OF HOME'].apply(lambda x: x.strip())
+home_mapping = {
+    '01 ONE FAMILY HOMES': 1,
+    '02 TWO FAMILY HOMES': 2,
+    '03 THREE FAMILY HOMES': 3
+}
+# Apply mapping
+for k, v in home_mapping.items():
+    df.loc[df['TYPE OF HOME'] == k, 'TYPE OF HOME'] = v
+
+df.to_csv('/Users/markmassafra/Desktop/manhattan-sales_v1.csv',index=False)
+
+
+import pandas as pd
+
+df = pd.read_csv('/Users/markmassafra/Desktop/manhattan-salesV1.csv')
+correlation = df['TYPE OF HOME'].corr(df['MEDIAN SALE PRICE'])
+print(correlation)
+
+Correlation: -0.0913
+No Correlation between median sale price and type of home
