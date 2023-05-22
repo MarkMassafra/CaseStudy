@@ -3,21 +3,21 @@ Overall Breakdown of processes completed in each version of the Manhattan Home S
 
 Original Dataset: manhattan-dataset.csv
 
-V1: manhattan_sales_V1.csv
+V1: manhattan_sales_V1.csv; Tools Used: Pandas
 Changed type of homes from string to numeric (one family homes -> 1) to see if possible correaltion between sales price and home type
 
-V2: manhattan_sales_V2.csv
+V2: manhattan_sales_V2.csv; Tools Used: Pandas, Excel
 Renamed columns
 Added zip code column to neighborhood, using Zillow - https://www.zillow.com
 Added relative region column within Manhattan (Upper,Lower, Midtown, Upper West Side, etc.)
 Poverty percentage column (from 2020 us census by zip code) and median income column (from 2020 us census by zip code) - https://data.census.gov
 
-V3: manhattan_sales_V3.csv
+V3: manhattan_sales_V3.csv; Tools Used: Pandas, Excel
 Added weighted avg sale price by neighborhood
 Added median housing price to median income ratio 
 Changed column names again, added string home type back in (one family homes), and changed location from abbreviation to full name (UWS to Upper West Side) 
 
-V4: manhattan_sales_V4.csv
+V4: manhattan_sales_V4.csv; Tools Used: Excel
 Added geospatial data in order to create ArcGIS map in PowerBI
 Found geospatial data and converted .dbf file to .csv
 Removed all neighborhoods not in my dataset manually in excel
