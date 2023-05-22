@@ -1,0 +1,31 @@
+Overall Breakdown of processes completed in each version of the Case Study
+
+
+Original Dataset: manhattan-dataset.csv
+
+V1: manhattan_sales_V1.csv
+Changed type of homes from string to numeric (one family homes -> 1) to see if possible correaltion between sales price and home type
+
+V2: manhattan_sales_V2.csv
+Renamed columns
+Added zip code column to neighborhood, using Zillow - https://www.zillow.com
+Added relative region column within Manhattan (Upper,Lower, Midtown, Upper West Side, etc.)
+Poverty percentage column (from 2020 us census by zip code) and median income column (from 2020 us census by zip code) - https://data.census.gov
+
+V3: manhattan_sales_V3.csv
+Added weighted avg sale price by neighborhood
+Added median housing price to median income ratio 
+Changed column names again, added string home type back in (one family homes), and changed location from abbreviation to full name (UWS to Upper West Side) 
+
+V4: manhattan_sales_V4.csv
+Added geospatial data in order to create ArcGIS map in PowerBI
+Found geospatial data and converted .dbf file to .csv
+Removed all neighborhoods not in my dataset manually in excel
+Copied over the BLDGZIP, PO_NAME, POPULATION, AREA, STATE, COUNTY, ST_FIPS, CTY_FIPS, URLM SHAPE_AREA, SHAPE_LEN columns from the zip code .csv file to the V3 file. Matched up the zip code 
+
+Geospatial Data: https://data.cityofnewyork.us/Business/Zip-Code-Boundaries/i8iw-xf4u/data?no_mobile=true
+
+
+Imported manhattan_sales_V4.csv into PowerBI
+
+
